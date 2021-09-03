@@ -143,18 +143,4 @@ function checkNotAuthenticated(req, res, next) {
 app.get("/map", function (req, res) {
   res.render("map");
 });
-// app.post("/map", checkNotAuthenticated, function (req, res) {
-// });
-let locations = [];
-pool.query(`Select lat, lng from locations`, (err, results) => {
-  if (err) {
-    console.log(err);
-    return;
-  }
-
-  for (i = 0; i < results.rows.length; i++) {
-    locations.push(results.rows[i]);
-  }
-  // console.log(locations);
-});
-console.log(locations);
+app.post("/map", checkNotAuthenticated, function (req, res) {});

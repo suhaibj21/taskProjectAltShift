@@ -2,11 +2,7 @@ const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcrypt");
 const { pool } = require("./dbconfig");
 function initialize(passport) {
-  // console.log("Initializing");
   const authenticateUser = (email, password, done) => {
-    // console.log("BE");
-    console.log(email, password);
-    // console.log("AF");
     pool.query(
       `SELECT * FROM users WHERE email = $1`,
       [email],

@@ -3,13 +3,10 @@
   <head>
     <title>Marker Clustering</title>
     <style>
-      /* Always set the map height explicitly to define the size of the div
-        * element that contains the map. */
       #map {
         height: 100%;
         width: 100%;
       }
-      /* Optional: Makes the sample page fill the window. */
       html,
       body {
         height: 100%;
@@ -27,29 +24,30 @@
           zoom: 4,
           center: { lat: 31.963158, lng: 35.930359 },
         });
-        console.log("hello");
-        let locations = [];
-        console.log(locations);
-        pool.query(`Select lat, lng from locations`, (err, results) => {
-          if (err) {
-            console.log(err);
-            return;
-          }
-          console.log(results.rows);
-          for (i = 0; i < results.rows.length; i++) {
-            locations.push(results.rows[i]);
-
-            // console.log(locations);
-            // res.redirect("/login");
-          }
-          // console.log("*****************************************");
-          // console.log(locations);
-          // console.log("*****************************************");
-
-        });
-        console.log("----------------------------------------");
-          console.log(locations);
-          console.log("----------------------------------------");
+        const locations = [
+        { lat:31.963158, lng: 35.930359 },
+        { lat:31.167261204172757,lng:35.7683820055919 },
+        { lat:31.16979413606654, lng:35.73002386928904 },
+        { lat:31.16572714206657, lng:35.74728503062533 },
+        { lat:29.56631546630601, lng:35.00627556331416 },
+        { lat:29.550271320363965,lng:35.02134859989821 },
+        { lat:29.543887457110408,lng:35.00627556331416 },
+        { lat:32.13443326561075, lng:35.868605556024576 },
+        { lat:32.126874062637455,lng:36.07047932774868 },
+        { lat:32.5346040091746,  lng:35.900270056371696 },
+        { lat:32.54129715239183, lng:35.889755797427725 },
+        { lat:32.57233729097036, lng:35.914689162961096 },
+      ];
+        // pool.query(`Select lat, lng from locations`, (err, results) => {
+        //   if (err) {
+        //     console.log(err);
+        //     return;
+        //   }
+        //   console.log(results.rows);
+        //   for (i = 0; i < results.rows.length; i++) {
+        //     locations.push(results.rows[i]);
+        //   }
+        // });
         maxZoomService = new google.maps.MaxZoomService();
         const labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         const markers = locations.map((location, i) => {
@@ -66,41 +64,6 @@
             "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m",
         });
       }
-      let errors = [];
-      // pool.query(
-      //   `SELECT email FROM users
-      // where email= $1`,
-      //   ["suhaibyassin8@gmail.com"],
-      //   (err, results) => {
-      //     if (err) {
-      //       console.log(err);
-      //     }
-      //     const em = results.rows[0];
-      //     console.log(em["email"]);
-      //     if (results.rows.length > 0) {
-      //       // errors.push(results.rows[0]);
-      //       // console.log(errors);
-      //       // res.render("register", { errors });
-      //     } else {
-      //       pool.query(
-      //         `INSERT INTO users (name, email, password)
-      //                     VALUES ($1, $2, $3)
-      //                     RETURNING id, password`,
-      //         [User, Email, hashedpassword],
-      //         (err, results) => {
-      //           if (err) {
-      //             console.log(err);
-      //             res.sendStatus(500);
-      //             return;
-      //           }
-      //           // console.log(results.rows);
-      //           // res.redirect("/login");
-      //         }
-      //       );
-      //     }
-      //   }
-      // );
-
    </script>
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVfNkKSSL4VBiLxF6w-AKvLJSOXM34hUk&callback=initMap&libraries=&v=weekly&channel=2"
       async defer>
@@ -108,5 +71,3 @@
     
     </body>
 </html>
-
-   <!-- <%- include('../map2.ejs') %> -->
